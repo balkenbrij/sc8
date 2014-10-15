@@ -124,9 +124,10 @@ main(int argc, char **argv)
   if (popt) {
     strncat(preview_name, output_name, 1024);
     strncat(preview_name, ".png", 1024);
-    preview_name[1024]='\0';
+    preview_name[1023]='\0';
     MagickSetCompressionQuality(mw, 95); 
-    MagickWriteImage(mw, preview_name);
+    if (! MagickWriteImage(mw, preview_name))
+      exit_error("error: can't write preview image\n");
   } 
   mw = DestroyMagickWand(mw);  
   MagickWandTerminus();
