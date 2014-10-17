@@ -90,7 +90,8 @@ main(int argc, char **argv)
     else if (height > width)
       height=212, width = 256*aspect;
     pw = NewPixelWand();
-    PixelSetColor(pw, bg_color);
+    if (!PixelSetColor(pw, bg_color))
+      exit_error("error: unknown background color\n");
     MagickSetImageBackgroundColor(mw, pw);
     MagickResizeImage(mw, width, height,  LanczosFilter, 1);
     MagickExtentImage(mw, 256, 212, -((256-width)>>1), -((212-height)>>1));
@@ -112,7 +113,7 @@ main(int argc, char **argv)
     
   for (y=0; y<212; ++y) {
     pixelrow = PixelGetNextIteratorRow(pi, &width);
-    for (x=0; x<(int)width; ++x) {
+    for (x=0; x<256; ++x) {
       sc8[y][x] = (PixelGetBlueQuantum(pixelrow[x])>>(qdepth-2)) + 
                   (PixelGetRedQuantum(pixelrow[x])>>(qdepth-3)<<2) + 
                   (PixelGetGreenQuantum(pixelrow[x])>>(qdepth-3)<<5); 
@@ -122,11 +123,11 @@ main(int argc, char **argv)
 
   /* write a png if preview option is specified */
   if (popt) {
-    strncat(preview_name, output_name, 1024);
+    strncpy(preview_name, output_name, 1024);
     strncat(preview_name, ".png", 1024);
     preview_name[1023]='\0';
     MagickSetCompressionQuality(mw, 95); 
-    if (! MagickWriteImage(mw, preview_name))
+    if (!MagickWriteImage(mw, preview_name))
       exit_error("error: can't write preview image\n");
   } 
   mw = DestroyMagickWand(mw);  
