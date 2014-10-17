@@ -63,7 +63,6 @@ main(int argc, char **argv)
         break;
       case 'h': usage();        
       case 'p': popt=1; break;
-      default: fprintf(stderr, "warning: unknown option '%c'\n", c);
     }
   }
   if (argc - optind != 2)
