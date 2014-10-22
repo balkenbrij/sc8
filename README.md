@@ -21,7 +21,7 @@ development files, libmagickwand-dev.
 Example
 =======
 
-This is the public domain wikipedia color chart convert in all three
+This is the public domain wikipedia color chart converted in all three
 dither options.
 
 ![Original 24bit](/example/chart.png?raw=true "Original 24bit")
