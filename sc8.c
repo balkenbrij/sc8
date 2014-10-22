@@ -126,12 +126,12 @@ main(int argc, char **argv)
 
     for (y = 0; y < 212; ++y) {
         pixelrow = PixelGetNextIteratorRow(pi, &width);
-    for (x = 0; x < 256; ++x) {
-        sc8[y][x] =
-            (PixelGetBlueQuantum(pixelrow[x]) >> (qdepth - 2)) +
-            (PixelGetRedQuantum(pixelrow[x]) >> (qdepth - 3) << 2) +
-            (PixelGetGreenQuantum(pixelrow[x]) >> (qdepth - 3) << 5);
-    }
+        for (x = 0; x < 256; ++x) {
+            sc8[y][x] =
+                (PixelGetBlueQuantum(pixelrow[x]) >> (qdepth - 2)) +
+                (PixelGetRedQuantum(pixelrow[x]) >> (qdepth - 3) << 2) +
+                (PixelGetGreenQuantum(pixelrow[x]) >> (qdepth - 3) << 5);
+        }
     }
     DestroyPixelIterator(pi);
 
