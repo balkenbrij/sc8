@@ -12,6 +12,18 @@ usage: sc8 [-b color] [-d 1|2|3] [-p] input output
  -p                 Generate a preview image, 'output.png'
 ```
 
+Dependencies
+============
+
+You'll need ImageMagick to compile it. On debian systems you'll need the
+development files, libmagickwand-dev.
+
+Example
+=======
+
+This is the public domain wikipedia color chart convert in all three
+dither options.
+
 ![Original 24bit](/example/chart.png?raw=true "Original 24bit")
 ![sc8 dither option 1 (o2x2)](/example/chart_d1.sc8.png?raw=true "sc8 dither option 1 (o2x2)")
 ![sc8 dither option 2 (o4x4)](/example/chart_d2.sc8.png?raw=true "sc8 dither option 2 (o4x4)")
