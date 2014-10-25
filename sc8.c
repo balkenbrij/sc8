@@ -137,9 +137,9 @@ main(int argc, char **argv)
 
     /* write a png if preview option is specified */
     if (popt) {
-        strncpy(preview_name, output_name, 1024);
-        strncat(preview_name, ".png", 1024);
+        strncpy(preview_name, output_name, 1023);
         preview_name[1023] = '\0';
+        strncat(preview_name, ".png", 1023);
         MagickSetCompressionQuality(mw, 95);
         if (!MagickWriteImage(mw, preview_name))
             exit_error("error: can't write preview image\n");
