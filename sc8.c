@@ -92,9 +92,9 @@ main(int argc, char **argv)
     if (width != 256 || height != 212) {
         double aspect = (double) width / height;
         if (width > height)
-            width = 256, height = 212 / aspect;
+            width = 256, height = 256 / aspect;
         else if (height > width)
-            height = 212, width = 256 * aspect;
+            height = 212, width = 212 * aspect;
         pw = NewPixelWand();
         if (!PixelSetColor(pw, bg_color))
             exit_error("error: unknown background color\n");
