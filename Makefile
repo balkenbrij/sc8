@@ -1,6 +1,6 @@
 CC= 		gcc
-CFLAGS= 	-O2 -Wall -Wextra `Wand-config --cflags`
-LDFLAGS= 	`Wand-config --libs`
+CFLAGS= 	-O2 -Wall -Wextra `pkg-config --cflags MagickWand`
+LDFLAGS= 	`pkg-config --libs MagickWand`
 
 
 all:
